@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+  <title>RGUKT HOSPITAL MANAGEMENT SYSTEM</title>
+  <meta name="viewport" content="width-device-width,initial-scale=1">
+  <style type="text/css">
+
+  body,html
+  {
+height: 100%;
+  background-image:url(/static/images/background13.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  overflow: hidden;
+  }
+  h1
+{
+position: relative;
+font-family: times new roman;
+font-size:16px;
+font-weight: bold;
+margin-bottom: 1px;
+text-shadow: 1px 1px #12232e;
+color: #12232e;
+}
+.tit img
+{
+margin-top:5px;
+border-radius: 5px;
+background-color: black;width: 1250px;
+height: 90px;
+border-width: 0%;
+border-color:black;
+box-shadow: 0px 0px 0px powderblue;
+text-align: center;
+}
+p
+{
+font-size: 35px;
+background-color:#5DA2D5;
+position: absolute;
+float: left;
+border-left: 0px;
+ box-shadow: 0px 6px 5px black;
+color:white;
+width: 250px;
+font-family: sans-serif;
+}
+.doc img
+{
+border-style: solid;
+border-color:#05386b;
+width: 200px;
+  height: 200px;
+  border:2px solid black;
+  -moz-box-shadow: 0px 6px 5px black;
+  -webkit-box-shadow: 0px 6px 5px black;
+  border-radius:190px;
+  margin-top: 100px;
+  margin-left:400px;
+  background-color:#5DA2D5;
+}
+.pat img
+{
+border-style: solid;
+border-color:#05386b;
+width: 200px;
+  height: 200px;
+  border:2px solid black;
+  -moz-box-shadow: 0px 6px 5px black;
+  -webkit-box-shadow: 0px 6px 5px black;
+  border-radius:190px;
+  margin-top: 100px;
+  margin-left:125px;
+  background-color:#5DA2D5;
+}
+.phar img
+{
+border-style: solid;
+border-color:#05386b;
+width: 200px;
+  height: 200px;
+  border:2px solid black;
+  -moz-box-shadow: 0px 6px 5px black;
+  -webkit-box-shadow: 0px 6px 5px black;
+  border-radius:190px;
+  margin-top: 100px;
+  margin-left:125px;
+  background-color:#5DA2D5;
+}
+.a
+{
+text-align: left;
+position: left;
+background-color: #5DA2D5;
+float: left;
+margin-top: 40px;
+margin-left: 430px;
+font-size: 30px;
+width: 150px;
+text-align: center;
+border-radius: 9px;
+ border:2px solid black;
+ border-style: solid;
+border-width: medium;
+  box-shadow: 0px 6px 5px black;
+  font-family: sans-serif;
+
+}
+.b
+{
+ box-shadow: 0px 6px 5px black;
+text-align: left;
+position: left;
+background-color: #5DA2D5;
+float: left;
+margin-left: 170px;
+font-size: 30px;
+margin-top: 40px;
+width: 150px;
+text-align: center;
+border-radius: 9px;
+ border:2px solid black;
+ border-style: solid;
+border-width: medium;
+font-family: sans-serif;
+
+
+}
+.c
+{
+ box-shadow: 0px 6px 5px black;
+text-align: left;
+position: left;
+background-color:#5DA2D5;
+float: left;
+margin-left: 170px;
+font-size: 30px;
+text-align: center;
+margin-top: 40px;
+width: 190px;
+border-radius: 9px;
+border-style: solid;
+border-width: medium;
+font-family: sans-serif;
+ border:2px solid black;
+}
+hr
+{
+margin-top: 70px;
+color:red;
+}
+.foot
+{
+text-align: center;
+font-size: 20px;
+background-color:black;
+color:white;
+height: 130%;
+margin-top: 100px;
+margin-left: 650px;
+width: 100%;
+
+}
+
+.e
+{
+margin-top: 5px;
+color:white;
+font-size: 15px;
+margin-left: 200px;
+float: left;
+}
+.g
+{
+margin-top: 1px;
+color:cyan;
+margin-left: 15px;
+float: left;
+font-size: 20px;
+}
+.g a
+{
+color:cyan;
+}
+.f
+{
+margin-top: 8px;
+color:white;
+margin-left: 600px;
+float: left;
+}
+
+.h
+{
+margin-top: 5px;
+margin-left:15px;
+float: right;
+font-size: 20px;
+}
+.h a
+{
+color:cyan;
+}
+.footer
+{
+margin-top: 80px;
+background-color:black;
+width: 300%;
+font-family: sans-serif;
+height: 100%;
+}
+.social-links img
+{
+height:30px;
+margin-right: 10px;
+}
+  </style>
+</head>
+<body>
+<center><h1><div class="tit"><img src="/static/images/headinglogo.jpg"></div></h1>
+<h1 style="text-align: center; font-size: 270%;text-align: 40px; ">HOSPITAL MANAGEMENT SYSTEM</h1></center>
+<p>Login as</p>
+<table>
+<tr>
+<td class="doc"><a href="{% url 'doctorlogin' %}"><img src="/static/images/doc.png"></a></td>
+<td class="pat"><a href="{% url 'index' %}"><img src="/static/images/pat.png"</a></td>
+<td class="phar"><a href="{% url 'pharmacistlogin' %}"><img src="/static/images/unnamed.png"></a></td>
+</tr></table>
+<table>
+<tr>
+<td class="a">Doctor</td>
+<td class="b">Patient</td>
+<td class="c">Pharmacist</td>
+</tr></table>
+</center>
+<footer class="footer">
+<hr size="1" width="100%" color="red" height="10%">
+<table>
+<tr>
+<td class="e">Write to us at:</td><td class="g"><a href="mailto:"><!--enter your hospital mail id--></a></td>
+<td class="f">Useful links:</td><td class="h"><a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019" target="_blank">covid-19</td>
+</tr>
+<tr>
+<td><p1 class="foot">Copyright &copy Fantastic-4</p1></td>
+<td>
+<div class="social-links">
+<a href="#" target="_blank"><img src="/static/images/twitter.png"></a>
+<a href="#" target="_blank"><img src="/static/images/fb.png"></a>
+<a href="#" target="_blank"><img src="/static/images/insta.png"></a>
+</div>
+</td>
+</tr>
+</table>
+</footer>
+</html>

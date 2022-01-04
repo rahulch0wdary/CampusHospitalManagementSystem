@@ -1,0 +1,70 @@
+{% extends "DoctorDashboard.html" %}
+{% load static %}
+
+
+{% block content %}
+<style type="text/css">
+
+  .card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 1000px;
+  height:600px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+	table {
+  width:1000px;
+  height:600px;
+  margin-left: 100px;
+}
+ th{
+   border: 1px white black;
+  border-collapse: collapse;
+}
+table td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+  padding-left:50px;
+  text-align: left;
+}
+#t01 tr:nth-child(even) {
+  background-color: #eee;
+}
+#t01 tr:nth-child(odd) {
+ background-color: #fff;
+}
+#t01 th {
+  background-color: black;
+  color: white;
+}
+</style>
+</head>
+
+<center><h1 style="font-size:50px;margin-left: 140px;">Doctors Schedule</h1></center>
+<div class="card">
+<table id="t01">
+  <tr>
+    <th>DAY</th>
+    <th>Slot1<br>(7A.M-12P.M)
+    </th> 
+    <th>Slot2<br>(12P.M-5P.M)</th>
+     <th>Slot3<br>(5P.M-10P.M)</th>
+      <th>Slot4<br>(10P.M-7A.M)</th>
+  </tr>
+   {% for i in datainfo %}
+  <tr>
+    <td>{{ i.Day }}</td>
+    <td>{{ i.slot1 }}</td>
+    <td>{{ i.slot2 }}</td>
+    <td>{{ i.slot3 }}</td>
+    <td>{{ i.slot4 }}</td>
+ </tr>
+    {% endfor %}
+</table>
+
+</div>
+{% endblock content %}

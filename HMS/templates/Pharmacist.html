@@ -1,0 +1,24 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+  <link rel="stylesheet" type="text/css" href="/static/css/login.css">
+</head>
+<body style="background-color:#1F2833;background-repeat: no-repeat;background-position: center;background-size: cover;">
+<div class="container" id="container">
+  <div class="form-container sign-in-container">
+    <form action="{% url 'pharmacistlogin' %}" method="POST">
+      {% csrf_token %}
+      <h2>PHARMACIST STAFF LOGIN</h2>
+      <input type="text" placeholder="Username" required="" name="user"/>
+      <input type="password" placeholder="Password" required="" name="pass" />
+     <a href="{% url 'forgotpassword' %}"><p style="color: blue">Forgot your password?</p></a>
+      <button style="color:white">Sign In</button>
+      <p style="margin-top: 20px; border-radius: 6px; background-color:rgb(17,163,100);cursor: pointer;padding: 5px;font-weight: bold;color: white;border-width:2px black;"><a href="{% url 'home' %}"">Home page</a></p>
+    </form>
+  </div>
+  <div class="overlay-container">
+    <img src="/static/images/background26.jpg" class="im">
+</div>
+</body>
+</html>

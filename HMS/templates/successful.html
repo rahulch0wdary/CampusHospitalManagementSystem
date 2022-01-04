@@ -1,0 +1,80 @@
+<html>
+<head>
+<style>
+body
+{
+  background-image: linear-gradient(180deg,cyan,#87ceeb,#768087,teal,#000);
+  background-repeat: no-repeat;
+height: 100%;
+width: 100%;
+overflow: hidden;
+}
+.box {
+  box-shadow: 2px 2px 1px 1px black;
+  width: 550px;
+  height:350px;
+    margin-left: 485px;
+  border-style: solid;
+border-color:solid blue;
+  background-color:  #eee;
+  margin-bottom: 60px;
+  margin-top: 190px;
+  text-align: center;
+  text-decoration: none;
+}
+.box h1
+{
+  font-size: 30px;
+  margin-top: 85px;
+  font-weight: bold;
+  font-family:arial;
+  color: rgb(31, 40, 51);
+}
+.box p
+{
+  font-size: 20px;
+    font-weight: bold;
+  font-family:monospace;
+  color: rgb(31, 40, 51);
+}
+.box input
+{
+  width: 350px;
+  height: 30px;
+  margin-top: 20px;
+  border-radius: 1px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.box button {
+  color:black;
+  padding: 7px 10px;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 60px;
+  cursor: pointer;
+  border-radius: 15px;
+  width:25%;
+  background-color:#6fd19d;  
+  border: 1.9px solid black;
+  border-width: solid;
+  box-shadow: 1px 1px 1px 1px grey;
+}
+.box  button:hover {
+  color:white;
+  background-color:#2e8c5a;
+}
+}
+</style>
+</head>
+<body>
+<form action="{% url 'successful' %}" method="POST">
+	{% csrf_token %}
+<div class="box">
+  <h1>Your Appointment is Placed</h1>
+  <button type="submit">OK</button>
+</div>
+</div>
+</body>
+</html>

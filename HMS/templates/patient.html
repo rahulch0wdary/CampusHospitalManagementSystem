@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+<title>student application form</title>
+<link rel="stylesheet" type="text/css" href="/static/css/AppointmentForm.css">
+ <SCRIPT language=Javascript>
+      <!--
+      function isNumberKey(evt)
+      {
+         var charCode = (evt.which) ? evt.which : event.keyCode
+         if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+
+         return true;
+      }
+         //-->
+   </SCRIPT>
+</head>
+<body>
+<div class="container" id="container">
+	<div class="form-container sign-up-container">
+		<form action="{% url 'facultyappointment' %}" method="POST" name="faculty">
+			{% csrf_token %}
+			<h3>FACULTY APPOINTMENT FORM</h3>
+			<input type="text" onkeypress="return((event.charCode>=65 && charCode<=91)||(event.charCode>=97 && charCode<=123))" placeholder="ENTER YOUR NAME" required="" name="patient" />
+			<div style="margin-right:80px;"><table style="margin-left:130px;"><tr><td style="margin-right:">GENDER:</td><td><input type="radio" name="Female" value="Male">Male</td>
+			<td><input type="radio" name="Female" value="Female">Female</td></tr></table></div><br>
+			<table><tr><td style="margin-right:30px;">Select your doctor:</td><td><select  name="data">
+			{% for i in doctordata %}
+            <option>{{ i.Name }}</option>
+            {% endfor %}</select></td></tr></table>
+           <input type="text" placeholder="Enter Your Age" onkeypress="return isNumberKey(event)" required=""  name="age"/>
+            <input type="text" placeholder="Enter your college email id" required="" name="emailid" />
+            <input type="text" placeholder="Enter Your Mobile Number" onkeypress="return isNumberKey(event)" required="" name="phone"/>
+            <textarea rows="6" cols="25" placeholder="enter your problem here" required="" name="reason"></textarea>
+			<button type="submit">SUBMIT</button>
+		</form>
+	</div>
+	<div class="form-container sign-in-container">
+		<form action="{% url 'index' %}" method="POST" name="student">
+			{% csrf_token %}
+			<h3>STUDENT APPOINTMENT FORM</h3>
+			<input type="text" placeholder="ID NUMBER" required="" name="idnum" />
+			<input type="text" onkeypress="return((event.charCode>=65 && charCode<=91)||(event.charCode>=97 && charCode<=123))" placeholder="ENTER YOUR NAME" required="" name="patient" />
+			<div style="margin-right:80px;"><table style="margin-left:130px;"><tr><td style="margin-right:">GENDER:</td><td><input type="radio" name="Male" value="Male">Male</td>
+			<td><input type="radio" name="Male" value="Female">Female</td></tr></table></div><br>
+			<table><tr><td style="margin-right:50px; ">Select your doctor:</td><td>
+			<select name="data">
+			{% for i in doctordata %}
+            <option>{{ i.Name }}</option>
+            {% endfor %}</select></td></tr></table>
+           <input type="text" placeholder="Enter Your Age" onkeypress="return isNumberKey(event)"  required="" name="age" />
+            <input type="text" placeholder="Enter your college email id" required="" name="emailid" />
+            <input type="text" placeholder="Enter Your Mobile Number" onkeypress="return isNumberKey(event)" required="" name="phone" />
+            <textarea rows="6" cols="25" placeholder="enter your problem here" required="" name="reason"></textarea>
+			<button type="submit">SUBMIT</button>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Hello There!</h1>
+				<p>IF YOU ARE NOT A FACULTY PLEASE CLICK THE BELOW BUTTON</p>
+				<button class="ghost" id="click">CLICK HERE</button><br><br>
+				
+				<p style="margin-top: 20px; border-radius: 6px; background-color:cyan;color:white;cursor: pointer;padding: 5px;font-weight: bold;border-width:2px black;"><a href="{% url 'home' %}"><< Home page</a></p><br><br><br>
+				<table>
+					<tr>
+						<th align="center">Slot1(7AM-12PM</th><th><hr style="width:0px;height:30px;"></th>
+						<th align="center">Slot2(12PM-5PM)</th>
+						<th><hr style="width:0px;height:30px;"></th>
+						<th align="center">Slot3(5PM-10PM)</th>
+						<th><hr style="width:0px;height:30px;"></th>
+						<th align="center">Slot4(10PM-7AM)</th>
+					
+					</tr>
+					<tr>
+						<td>{{schedules.slot1}}</td>
+						<td><hr style="width:0px;height:30px;"></td>
+						<td>{{schedules.slot2}}</td>
+						<td><hr style="width:0px;height:30px;"></td>
+						<td>{{schedules.slot3}}</td>
+						<td><hr style="width:0px;height:30px;"></td>
+						<td>{{schedules.slot4}}</td>
+					</tr>
+				</table>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Hello,There!</h1>
+				<p>IF YOUR ARE NOT A STUDENT PLEASE CLICK THE BELOW BUTTON</p>
+				<button class="ghost" id="Click">CLICK HERE</button><br><br>
+				<p style="margin-top: 20px; border-radius: 6px; background-color:cyan;cursor: pointer;padding: 5px;font-weight: bold;"><a href="{% url 'home' %}"><< Home page</a></p><br><br><br>
+				<table>
+					<tr>
+						<th align="center">Slot1(7AM-12PM</th>
+						<th><hr style="width:0px;height:30px;"></th>
+						<th align="center">Slot2(12PM-5PM)</th>
+						<th><hr style="width:0px;height:30px;"></th>
+						<th align="center">Slot3(5PM-10PM)</th>
+						<th><hr style="width:0px;height:30px;"></th>
+						<th align="center">Slot4(10PM-7AM)</th>
+					</tr>
+					<tr>
+						<td>{{schedules.slot1}}</td>
+						<td><hr style="width:0px;height:30px;"></td>
+						<td>{{schedules.slot2}}</td>
+						<td><hr style="width:0px;height:30px;"></td>
+						<td>{{schedules.slot3}}</td>
+						<td><hr style="width:0px;height:30px;"></td>
+						<td>{{schedules.slot4}}</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="/static/js/appointment.js">
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<body style="color:#164a41;">
+<center>
+<h1 style="margin-right:600px;font-color:#164a41;"><u>PATIENT APPOINTMENT FORM</u></h1>
+<form>
+<table style="font-style:bold;border-collapse:separate;border-spacing: 0 15px;margin-right: 600px;">
+<tr><td>ID NO:<br></td><td><input type="text"><br></td></tr>
+<tr>
+<tr><td>Name:<br></td><td><input type="text" onkeypress="return((event.charCode>=65 && charCode<=91)||(event.charCode>=97 && charCode<=123))"><br></td></tr>
+<tr><td>GENDER:<br></td><td><input type="radio" name="Male" value="Male">Male
+<input type="radio" name="Male"value="Male">Female<br></td></tr>
+<tr><td>AGE<br></td><td><input type="text" name="date"><br></td></tr>
+<tr><td> College Email id:<br></td><td><input type="text"><br></td></tr>
+<tr><td>Mobile NO:<br></td><td><input type="text"><br></td></tr>
+<tr><td>academic year<br></td><td><select name="dropdown">
+<option value="E1">E1</option>
+<option value="E2">E2</option>
+<option value="E3">E3</option>
+<option value="E4">E4</option>
+</select>
+<tr><td>REASON:</td><td><textarea rows="6" cols="25"></textarea><td></tr>
+<tr><td>*if any previous reports*</td></tr>
+<tr><td>select image:<br></td><td><input type="file" name="image"></td></tr>
+<tr><td><input type="submit" name="Submit"value="Submit"/>&nbsp<input type="reset" name="Submit"value="reset" /><br></td></tr>
+</table>
+</form>
+<p><a href="{% url 'home' %}">go back</p>
+</center>
+</body>-->
+</html>

@@ -1,0 +1,112 @@
+{% extends "DoctorDashboard.html" %}
+{% block content %}
+{% load static %}
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+<style type="text/css">
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width:1200px;
+  height:720px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #BA68C8
+}
+
+.profile-button {
+    background: rgb(99, 39, 120);
+    box-shadow: none;
+    border: none
+}
+
+.profile-button:hover {
+    background: #682773
+}
+
+.profile-button:focus {
+    background: #682773;
+    box-shadow: none
+}
+
+.profile-button:active {
+    background: #682773;
+    box-shadow: none
+}
+
+.back:hover {
+    color: #682773;
+    cursor: pointer
+}
+
+.labels {
+    font-size: 11px
+}
+
+.add-experience:hover {
+    background: #BA68C8;
+    color: #fff;
+    cursor: pointer;
+    border: solid 1px #BA68C8
+}
+  </style>
+</head>
+<form action="{% url 'doctoreditprofile' %}" method="POST">
+{% csrf_token %}
+<div class=card>
+<div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"></span><span> </span></div>
+        </div>
+        <div class="col-md-5 border-right">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Profile Settings</h4>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-12"><label class="labels">Name</label><input type="text" class="form-control" placeholder="enter your name" value="{{data.Name}}" name="name" required=""></div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12"><label class="labels">PhoneNumber</label><input type="text" class="form-control" placeholder="enter phone number" value="{{ data.mobile}}" name="mobile" required=""></div>
+                    <div class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control" placeholder="enter email id" value="{{ data.email}}" name="emailid" required=""></div>
+                    
+                </div><br>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Login Credentials</h4>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12"><label class="labels">Username</label><input type="text" class="form-control" placeholder="change your username" value="{{ data.username}}" name="username" required=""></div><br><br>
+                    <div class="col-md-6"><label class="labels">change your password</label><input type="text" class="form-control" placeholder="enterpassword" value="{{ data.Password }}" name="pass" required=""></div>
+                    <div class="col-md-6"><label class="labels">Re-Enter Your Password</label><input type="password" class="form-control" value="" placeholder="re enter password" name="pass1" required=""></div>
+                </div>
+                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit"> Save Profile</button></div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Address Details</h4>
+                </div><br>
+                <div class="col-md-12"><label class="labels">Village</label><input type="text" class="form-control" placeholder="Enter your Village" value="{{ data.village}}" name="village" required=""></div> <br>
+                <div class="col-md-12"><label class="labels">Distrit</label><input type="text" class="form-control" placeholder="Enter your District" value="{{ data.District}}" name="district" required=""></div><br>
+                <div class="col-md-12"><label class="labels">State</label><input type="text" class="form-control" placeholder="Enter your State" value="{{ data.state}}" name="state" required=""></div><br>
+                <div class="col-md-12"><label class="labels">PinCode</label><input type="text" class="form-control" placeholder="Enter Pincode" value="{{ data.pincode}}" name="pincode" required=""></div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</form>
+{% endblock content %}

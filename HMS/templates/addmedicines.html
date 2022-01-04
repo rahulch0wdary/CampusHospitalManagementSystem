@@ -1,0 +1,260 @@
+{% extends "DoctorDashboard.html" %}
+{% load static %}
+{% block content %}
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script>
+  function addRow(tableID) {
+
+      var table = document.getElementById(tableID);
+
+      var rowCount = table.rows.length;
+      var row = table.insertRow(rowCount);
+
+      var cell1 = row.insertCell(0);
+      var element1 = document.createElement("input");
+      element1.type = "text";
+      element1.name="medicine";
+      cell1.appendChild(element1);
+
+      var cell2 = row.insertCell(1);
+      var element2 = document.createElement("input");
+      element2.type = "text";
+      element2.name="count";
+      cell2.appendChild(element2);
+
+      var cell3 = row.insertCell(2);
+      var element3 = document.createElement("input");
+      element3.type = "checkbox";
+      element3.name=`morning${rowCount}`;
+      cell3.appendChild(element3);
+
+      var cell4 = row.insertCell(3);
+      var element4 = document.createElement("input");
+      element4.type = "checkbox";
+      element4.name=`afternoon${rowCount}`;
+      cell4.appendChild(element4);
+
+      var cell5 = row.insertCell(4);
+      var element5 = document.createElement("input");
+      element5.type = "checkbox";
+      element5.name=`night${rowCount}`;
+      cell5.appendChild(element5);
+
+    }
+</script>
+<style>
+
+.box {
+  box-shadow: 8px 8px 8px 2px black;
+  width: 620px;
+  height:685px;
+    margin-left: 300px;
+  border-style: solid;
+border-color:#0c2e2b;
+  background-color:  #eee;
+
+
+}
+.box .info
+{
+  margin-left: 10px;
+  font-family:georgia;
+  font-weight: bold;
+  font-size: 3px;
+  color:#0b4e4f;
+  margin-top: 10px;
+}
+.box .prescribe
+{
+  margin-left:6px;
+  font-family: sans-serif;
+}
+.box .prescribe button
+{
+  border-radius: 8px;
+  padding: 4px;
+background-color:#135578;
+color:white;
+font-size: 10px;
+font-weight: bold;
+}
+.box .prescribe table
+{
+    border-style: solid;
+border-color:#0c2e2b;
+color:#135578;
+}
+.box .prescribe table input
+{
+background-color: #eee;
+  color:#0b4e4f;
+text-align: center;
+}
+.box .prescribe th {
+background-color:#43ada1;
+color:#fff;
+  border-style: solid;
+border-color:#0c2e2b;
+
+}
+.box .prescribe tr {
+background-color:#eee;
+color:#135578;
+
+}
+.box .prescribe.tr input {
+background-color:#eee;
+font-color: #061f29;
+
+}
+.tata .ttd
+{
+  font-size: 25px;
+  font-family:papyrus;
+  font-weight: bold;
+
+}
+.tata
+{
+  background-color:#43ada1;
+  position: relative;
+  width: 100%;
+  border-color:#0c2e2b;
+  border-bottom: 3.5px solid black;
+}
+
+.tata img
+{
+  height: 70px;
+  width: 70px;
+  margin-left: 50px;
+
+
+}
+.box label{
+font-size:25px;
+
+}
+.box .btn{
+  position:fixed;
+  bottom:40px;
+  left:20%;
+  width:40%;
+  margin-top: 100px;
+ 
+}
+.button {
+  background-color: skyblue;
+  padding-left:700px;
+  border: none;
+  color: white;
+  padding: 10px 80px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 535px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  margin-top: 90px;
+  border-radius: 15px;
+
+ 
+}
+.button1 {
+
+    background-color:#43ada1;
+  color: black;
+  font-weight: solid;
+  border: 2px solid black;
+  border-width: solid;
+}
+
+.button1:hover {
+ font-weight: solid;
+  color: black;
+}
+ 
+
+}
+</style>
+</head>
+<div class="box">
+
+<table class="tata">
+  <tr>
+  <td><img src="/static/images/rgukt.png"></td>
+  <td class="ttd">RGUKT Hospital</td>
+  </tr>
+
+</table>
+
+<div class="info">
+<label>PatientName:</label><label style="margin-left: 5px;">{{treatment.appointment.name}}</label><br>
+<label>Idno       :</label><label style="margin-left: 107px;">{{treatment.appointment.idnumber}}</label><br>
+<label>Reason     :</label><label style="margin-left: 70px;">{{treatment.appointment.reason}}</label><br>
+<label>Treated by  :</label><label style="margin-left: 30px;">{{treatment.appointment.doctor}}</label></div><br><br>
+  <div class="prescribe">
+   <label style="color: #061f29;font-weight: bold">Medicines :</label>&nbsp;&nbsp;
+    <button type="submit" class="" onclick="addRow('dataTable')">Add Medicine</button><br>
+ <form action="/addmedicinesforstudent/{{treatment.id}}" method="post">
+        {% csrf_token %}
+      <table id="dataTable" width="60%" cellpadding="0" cellspacing="1" border="#729111 1px solid"  style="text-align: center">
+      <tr>
+      <th align="center">MedicineName</th>
+       <th align="center">Count</th>
+      <th align="center">Morning</th>
+      <th align="center">Afternoon</th>
+      <th align="center">Evening</th>
+
+    </tr>
+    <tr>
+      
+       <td><input type="text" name="medicine">
+      </td>
+       <td><input type="text" name="count"></input>
+      </td>
+      <td><input type="checkbox" name="morning1" ></input>
+      </td>
+     <td><input type="checkbox" name="afternoon1" ></input>
+      </td>
+       <td><input type="checkbox" name="night1"></input>
+      </td>
+    </tr>
+   
+    </table><br>
+     <h5>Select Pharmacist</h5>
+     <select name="pharmacist">
+      {% for i in pharmacists %}
+            <option>{{ i.Name }}</option>
+            {% endfor %}
+        </select>
+ 
+   </div><br>
+   <div>
+    <center>
+     <table id="dataTable" width="60%" cellpadding="0" cellspacing="1" border="#729111 1px solid"  style="text-align: center">
+      <tr>
+      <th align="center">Slot1(7AM-12PM</th>
+       <th align="center">Slot2(12PM-5PM)</th>
+      <th align="center">Slot3(5PM-10PM)</th>
+      <th align="center">Slot4(10PM-7AM)</th>
+
+    </tr>
+    <tr>
+      <td>{{schedule.slot1}}</td>
+       <td>{{schedule.slot2}}</td>
+        <td>{{schedule.slot3}}</td>
+       <td>{{schedule.slot4}}</td>
+       
+    </tr>
+  </table>
+</center>
+   </div>
+    <div class=btn>
+      <button class="button button1" type="submit">Treated</button>
+    </div>
+</form>
+</div>
+{% endblock content %}

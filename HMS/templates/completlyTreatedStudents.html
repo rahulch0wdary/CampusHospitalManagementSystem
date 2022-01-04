@@ -1,0 +1,71 @@
+<html>
+{% load static %}
+<head>
+<style>
+body
+{
+  background-color:#3da69d;
+}
+.box {
+  box-shadow: 4px 4px 4px 2px black;
+  width: 600px;
+  height:350px;
+    margin-left: 450px;
+  border-style: solid;
+border-color:#0c2e2b;
+  background-color:  #fff ;
+  margin-bottom: 60px;
+  margin-top: 190px;
+  border-radius: 15px;
+  text-decoration: none;
+
+}
+.box p
+{
+  font-size: 30px;
+  font-weight: bold;
+  font-family: cursive;
+  color: rgb(31, 40, 51);
+}
+
+.box button {
+  color: white;
+  padding: 10px 10px;
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 80px;
+  cursor: pointer;
+  border-radius: 15px;
+  width:40%;
+  background-color:teal;
+  color: black;
+  border: 2px solid black;
+  border-width: solid;
+  box-shadow: 1px 1px 1px 1px #0c2e2b;
+}
+.box  button:hover {
+  color: black;
+  background-color:aqua;
+}
+img
+{
+  height:300px;
+  width:300px;
+  margin-top: 30px;
+}
+}
+</style>
+</head>
+<body>
+<div class="box">
+<form method="POST" action="{% url 'completlytreatedStudents' %}">
+   {% csrf_token %}
+ <table><tr><td> <table><tr><td><img src="/static/images/treated.png"></td></tr></table></td><td><table><tr><td><p style="margin-left:50px;margin-bottom: 60px; ">Treatment Compleated</p></td></tr><tr><td>
+    <button type="submit">OK</button>
+</td>
+</tr>
+</table></td></tr></table>
+</form>
+</div>
+</body>
+</html>

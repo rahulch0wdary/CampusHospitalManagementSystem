@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Rahul</title>
+
+
+    <style>
+        *
+        {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body
+        {
+            min-height: 100vh;
+            overflow:hidden;
+        }
+
+        section
+        {
+            width: 100%;
+        }
+
+        .navbar
+        {
+            position: relative;
+            background-color:#1F2833;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height:70px;
+            width:100%;
+            z-index: 10;
+            scroll-behavior:unset;
+        }
+        .navbar .logo
+        {
+            font-size: 28px;
+            margin-left: 20px;
+            color:white;
+            letter-spacing: 1px;
+            font-size:30px;
+            font-weight:bolder;
+
+        }
+
+        .navbar ul
+        {
+            display: flex;
+            margin-right: 10px;
+        }
+
+        .navbar ul li
+        {
+            list-style: none;
+        }
+
+        .navbar ul li a
+        {
+            text-decoration: none;
+            color: #fff;
+            margin-left: 10px;
+            font-size: 16px;
+
+        }
+         .navbar button{
+            border: none;
+            padding:12px 0px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size:20px;
+            font-weight:bolder;
+            overflow:hidden;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+         .navbar button{
+          background-color:#1F2833; 
+          color:#fff;
+          border:none;
+        }
+        .navbar button:hover{
+           background-color:#000000;
+           padding:7%;
+           color:#fff;
+        }
+        .container-fluid
+        {
+            position: relative;
+            width: 1000%;
+            height: 100vh;
+            display:flex;
+           
+        }
+
+        .container-fluid ._left-container
+        {
+            width:330px;
+            height: calc(100vh - 50px);
+            background:#1F2833;
+            padding-top:30px;
+            display:flex;
+        }
+
+        .container-fluid ._left-container ul
+        {
+            display: flex;
+            flex-direction: column;
+            justify-content:flex-start;
+            width: 100%;
+            height: 100%;
+            padding:10px;
+        }
+
+        .container-fluid ._left-container ul li
+        {
+            list-style: none;
+        }
+        
+        .container-fluid ._left-container ul li a
+        {
+            text-decoration: none;
+            font-weight:bold;
+        }
+        .container-fluid ._left-container button{
+            border: none;
+            padding:32px 0px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size:20px;
+            font-weight:bolder;
+            margin: 4px 2px;
+            transition-duration: 1.0s;
+            cursor: pointer;
+            background-color:#1F2833; 
+            color:#fff;
+            border:none;
+        }
+    .container-fluid ._left-container button:hover{
+        background-color:#000000;
+        padding:6%;
+        color:#fff;
+    }
+     .container-fluid .right
+        {     
+            padding-top:10px;
+            padding-left:10px;
+           
+        }
+  
+    </style>
+</head>
+<body>
+    {% csrf_token %}
+    <section class="navbar">
+        <div class="logo">
+            <h3><i class="fa fa-user-md">{{ data.Name }}</i></h3>
+        </div>
+        <ul>
+            <li><p style="border-radius: 3px; background-color:teal;cursor: pointer;padding: 8px;font-weight: bold;color: white;border-width:2px black;margin-right: 60px;margin-top: 15px;"><a href="{% url 'index' %}"">Make Appointment</a></p></li>
+            <li><a href="{% url 'home' %}"><button><i class="fa fa-sign-out">Logout</i></button></a></li>
+        </ul>
+    </section>
+    <section>
+        <div class="container-fluid">
+            <div class="_left-container">
+                <ul>
+                    <li><a href="{% url 'studentsappointments' %}"><button><i class="fa fa-calendar-plus-o">&nbsp;&nbsp; STUDENT APPOINTMENTS</i></button></a></li>
+                    <li><a href="{% url 'facultyappointments' %}"><button><i class="fa fa-calendar-check-o"> &nbsp;&nbsp;FACULTY APPOINTMENTS</i></button></a></li>
+                    <li><a href="{% url 'doctorschedule' %}"><button><i class="fa fa-id-card-o">&nbsp;&nbsp;SCHEDULE</i></button></a></li>
+                      <li><a href="{% url 'doctoreditprofile' %}"><button><i class="fa fa-user">&nbsp;&nbsp;VIEW PROFILE</i></button></a></li>
+                </ul>
+            </div>
+            <div class="right">
+                {% block content %}
+                {% endblock content %}
+               
+                
+            </div>
+           
+        </div>
+       
+    </section>
+</body>
+</html>
